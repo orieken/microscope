@@ -6,3 +6,5 @@
 standard-app-packages
 insecure
 bootstrap
+iron-router
+spin
