@@ -6,10 +6,10 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </a>
-            <a class="brand" href="{{pathfor 'postsList'}}">Microscope</a>
+            <a class="brand" href="{{pathFor 'postsList'}}">Microscope</a>
             <div class="nav-collapse collapse">
                 <ul class="nav">
-                    <li><a href="{{pathFor 'postSubmit'}}">New</a></li>
+                    {{#if currentUser}}<li><a href="{{pathFor 'postSubmit'}}">Submit Post</a></li>{{/if}}
                 </ul>
                 <ul class="nav pull-right">
                     <li>{{> loginButtons}}</li>
