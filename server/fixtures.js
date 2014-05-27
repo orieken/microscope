@@ -8,7 +8,7 @@ if (Posts.find().count() === 0){
     Posts.insert({
         title: 'Meteor',
         author: 'Tom Coleman',
-        url: ' http://meteor.com'
+        url: 'http://meteor.com'
     });
 
     Posts.insert({

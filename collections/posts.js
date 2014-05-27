@@ -23,26 +23,17 @@ Meteor.methods({
             throw new Meteor.Error(422, 'Please fill in a headline');
 
         if (postAttributes.url && postWithSameLink) {
-            throw new Meteor.Error(302, 'This Link has already been posted', postWithSameLink._id);
+            throw new Meteor.Error(302,
+                'This Link has already been posted',
+                postWithSameLink._id);
         }
 
-        var post = _.extend(_.pick(postAttributes, 'url', 'message'), {
-
-            title: postAttributes.title + (this.isSimulation ? ' (client)' : ' (server)'),
+        var post = _.extend(_.pick(postAttributes, 'url', 'title', 'message'), {
             userId: user._id,
             author: user.username,
             submitted: new Date().getTime()
         });
 
-        if (!this.isSimulation) {
-            var Future = Npm.require('fibers/future');
-            var future = new Future();
-
-            Meteor.setTimeout(function () {
-                future.return();
-                }, 5 * 1000);
-                future.wait();
-            }
 
         var postId = Posts.insert(post);
 
